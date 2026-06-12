@@ -1,20 +1,20 @@
 **Best Time to Buy and Sell Stock II**
-'''
+---
 **Pattern**
 Greedy
-'''
+---
 **Problem**
 
 You are given an integer array `prices` where:
 prices[i] represents the stock price on day `i`.
 You may complete as many transactions as you like (buy one and sell one share multiple times).
 Return the maximum profit you can achieve.
-'''
+---
 **Intuition**
 
 Whenever the stock price increases from one day to the next, we can profit from that increase.
 Instead of finding the overall buy and sell days, we simply capture every positive gain.
-'''
+---
 **Algorithm**
 
 1. Initialize `maxProfit = 0`.
@@ -23,7 +23,7 @@ Instead of finding the overall buy and sell days, we simply capture every positi
    - Add the difference to `maxProfit`.
 4. Return `maxProfit`.
 
-'''
+---
 ***Time Complexity***
 
 We traverse the array once.
@@ -40,7 +40,7 @@ Subtraction → O(1)
 Therefore:
 Time Complexity = O(n)
 
-'''
+---
 ***Space Complexity***
 
 No extra data structure is used.
