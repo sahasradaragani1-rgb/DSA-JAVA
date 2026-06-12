@@ -2,13 +2,13 @@
 
 **Pattern**
 Two Pointers
-
+---
 **Problem**
 
 Given a sorted array nums, remove the duplicates in-place such that each unique element appears only once.
 
 Return the number of unique elements.
-
+---
 **Intuition**
 
 Since the array is already sorted:
@@ -27,7 +27,7 @@ Whenever we find a new unique element:
 nums[j] != nums[j - 1]
 
 we copy it to index k and increment k.
-
+---
 **Algorithm**
 
 If array is empty, return 0.
@@ -37,7 +37,7 @@ If current element differs from previous:
 Place it at index k
 Increment k
 After traversal, first k elements contain unique values.
-
+---
 **Time Complexity**
 
 Loop runs from:
@@ -60,7 +60,7 @@ Assignment = O(1)
 Therefore:
 
 Time Complexity = O(n)
-
+---
 **Space Complexity**
 
 No extra array is created.
