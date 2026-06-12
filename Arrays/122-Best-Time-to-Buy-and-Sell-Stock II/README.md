@@ -17,6 +17,7 @@ Return the maximum profit you can achieve.
 
 Whenever the stock price increases from one day to the next, we can profit from that increase.
 Instead of finding the overall buy and sell days, we simply capture every positive gain.
+
 ---
 **Algorithm**
 
