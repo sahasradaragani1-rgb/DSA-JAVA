@@ -27,6 +27,7 @@ Whenever we find a new unique element:
 nums[j] != nums[j - 1]
 
 we copy it to index k and increment k.
+
 ---
 **Algorithm**
 
