@@ -1,7 +1,9 @@
 **Best Time to Buy and Sell Stock II**
 ---
 **Pattern**
+
 Greedy
+
 ---
 **Problem**
 
@@ -9,6 +11,7 @@ You are given an integer array `prices` where:
 prices[i] represents the stock price on day `i`.
 You may complete as many transactions as you like (buy one and sell one share multiple times).
 Return the maximum profit you can achieve.
+
 ---
 **Intuition**
 
