@@ -1,19 +1,28 @@
-# Rearrange Array Elements by Sign
+# Merge Two Sorted Arrays Without Extra Space
 
 ## Pattern
 
-Array Placement
+Gap Method
 
 ---
 
 ## Problem
 
-Given an array containing an equal number of positive and negative integers, rearrange the array such that:
+Given two sorted arrays:
 
-- Positive and negative numbers alternate.
-- The relative order of positives is maintained.
-- The relative order of negatives is maintained.
-- The array starts with a positive number.
+```
+arr1[]
+arr2[]
+```
+
+Merge them without using extra space such that:
+
+```
+All smaller elements remain in arr1
+All larger elements remain in arr2
+```
+
+Both arrays should remain sorted.
 
 ---
 
@@ -22,51 +31,83 @@ Given an array containing an equal number of positive and negative integers, rea
 Input:
 
 ```
-nums = [3,1,-2,-5,2,-4]
+arr1 = [1,4,8,10]
+arr2 = [2,3,9]
 ```
 
 Output:
 
 ```
-[3,-2,1,-5,2,-4]
+arr1 = [1,2,3,4]
+arr2 = [8,9,10]
 ```
 
 ---
 
-## Intuition
+## Brute Force
 
-Since:
+Create a third array.
 
 ```
-Positive → Even Index
-Negative → Odd Index
+Merge both arrays
+Copy back
 ```
 
-we can directly place elements into their correct positions.
+Time:
 
-Maintain:
-
-```java
-pos = 0
-neg = 1
 ```
+O(n+m)
+```
+
+Space:
+
+```
+O(n+m)
+```
+
+Not allowed.
 
 ---
 
-## Algorithm
+## Optimal Idea
 
-1. Create result array.
-2. Maintain:
-   - pos = 0
-   - neg = 1
-3. Traverse original array.
-4. If positive:
-   - Place at pos
-   - pos += 2
-5. If negative:
-   - Place at neg
-   - neg += 2
-6. Print result.
+Treat both arrays as one virtual array:
+
+```
+[1,4,8,10 | 2,3,9]
+```
+
+Apply Shell Sort's Gap Method.
+
+Compare elements that are:
+
+```
+gap distance apart
+```
+
+and swap if needed.
+
+Gradually reduce gap.
+
+---
+
+## Gap Formula
+
+```
+gap = ceil(length / 2)
+```
+
+Next gap:
+
+```
+gap = ceil(gap / 2)
+```
+
+Until:
+
+```
+gap = 1
+```
 
 ---
 
@@ -75,56 +116,78 @@ neg = 1
 Input:
 
 ```
-[3,1,-2,-5,2,-4]
+arr1 = [1,4,8,10]
+arr2 = [2,3,9]
 ```
 
-Processing:
+Virtual Array:
 
 ```
-3  -> index 0
-1  -> index 2
--2 -> index 1
--5 -> index 3
-2  -> index 4
--4 -> index 5
+[1,4,8,10,2,3,9]
 ```
 
-Result:
+Gap:
 
 ```
-[3,-2,1,-5,2,-4]
+4
+```
+
+Compare:
+
+```
+1 & 2
+4 & 3
+8 & 9
+...
+```
+
+Swap where necessary.
+
+Continue reducing gap.
+
+Final:
+
+```
+[1,2,3,4,8,9,10]
+```
+
+Split back:
+
+```
+arr1 = [1,2,3,4]
+arr2 = [8,9,10]
 ```
 
 ---
 
 ## Time Complexity
 
-Single traversal:
+Gap decreases logarithmically.
 
 ```
-O(n)
+O((n+m) log(n+m))
 ```
 
 ---
 
 ## Space Complexity
 
-Result array:
+No extra array used.
 
 ```
-O(n)
+O(1)
 ```
 
 ---
 
-## Key Observation
+## Why Gap Method?
 
-The problem guarantees:
+Interviewers often reject:
 
 ```
-Number of positives = Number of negatives
+Extra array solution
 ```
 
-Therefore every positive can occupy an even index and every negative can occupy an odd index.
+Gap method is the expected optimized solution.
 
 ---
