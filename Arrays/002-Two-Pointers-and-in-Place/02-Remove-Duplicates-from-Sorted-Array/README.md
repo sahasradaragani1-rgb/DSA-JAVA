@@ -1,7 +1,9 @@
 **Remove Duplicates from Sorted Array**
 
 **Pattern**
+
 Two Pointers
+
 ---
 **Problem**
 
