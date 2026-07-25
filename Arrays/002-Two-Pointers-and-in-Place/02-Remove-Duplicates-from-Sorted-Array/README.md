@@ -33,11 +33,17 @@ we copy it to index k and increment k.
 **Algorithm**
 
 If array is empty, return 0.
+
 Initialize k = 1.
+
 Traverse from index 1 to n-1.
+
 If current element differs from previous:
+
 Place it at index k
+
 Increment k
+
 After traversal, first k elements contain unique values.
 
 ---
