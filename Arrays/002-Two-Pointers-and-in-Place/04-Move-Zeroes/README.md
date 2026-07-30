@@ -1,91 +1,54 @@
-# Remove Element
-
-## Pattern
-
-Two Pointer
-
----
+# Move Zeroes
 
 ## Problem
 
-Given an array and a value `val`, remove all occurrences of `val` in-place.
+Given an integer array `nums`, move all `0`s to the end of the array while maintaining the relative order of the non-zero elements.
 
-Return the number of remaining elements.
+The operation must be performed **in-place** without creating another array.
 
 ---
 
 ## Example
 
-Input:
+### Input
 
-```
-nums = [3,2,2,3]
-val = 3
-```
-
-Output:
-
-```
-2
+```text
+[0, 1, 0, 3, 12]
 ```
 
-Array:
+### Output
 
-```
-[2,2]
+```text
+[1, 3, 12, 0, 0]
 ```
 
 ---
 
-## Intuition
+## Approach
 
-We don't actually need another array.
+Use the **Two Pointer Technique**.
 
-Maintain a pointer:
+Maintain a pointer `j` that represents the position where the next non-zero element should be placed.
 
-```
-k
-```
+Traverse the array using pointer `i`:
 
-which represents the position where the next valid element should go.
+1. If `nums[i]` is non-zero, swap `nums[i]` with `nums[j]`.
+2. Increment `j`.
+3. Continue until the entire array is processed.
 
-Traverse the array:
-
-- If element is not equal to val:
-  - Put it at index k
-  - Increase k
+This moves all non-zero elements to the front while preserving their relative order. The remaining positions automatically contain zeroes.
 
 ---
 
 ## Algorithm
 
-1. Initialize:
+1. Initialize `j = 0`.
+2. Traverse the array from left to right using `i`.
+3. If `nums[i] != 0`:
 
-```
-k = 0
-```
-
-2. Traverse array.
-
-3. If:
-
-```
-nums[i] != val
-```
-
-copy:
-
-```
-nums[k] = nums[i]
-```
-
-increment:
-
-```
-k++
-```
-
-4. First k elements are the answer.
+   * Swap `nums[i]` and `nums[j]`.
+   * Increment `j`.
+4. Print the modified array.
 
 ---
 
@@ -93,81 +56,65 @@ k++
 
 Input:
 
-```
-[3,2,2,3]
-val = 3
-```
-
-Start:
-
-```
-k = 0
+```text
+[0, 1, 0, 3, 12]
 ```
 
-3:
+After processing:
 
-```
-skip
-```
-
-2:
-
-```
-nums[0] = 2
-k = 1
+```text
+[1, 0, 0, 3, 12]
 ```
 
-2:
-
-```
-nums[1] = 2
-k = 2
+```text
+[1, 3, 0, 0, 12]
 ```
 
-3:
-
-```
-skip
+```text
+[1, 3, 12, 0, 0]
 ```
 
-Result:
+Final result:
 
-```
-[2,2]
-```
-
-Length:
-
-```
-2
+```text
+[1, 3, 12, 0, 0]
 ```
 
 ---
 
-## Time Complexity
+## Complexity Analysis
 
-Single traversal:
+### Time Complexity
 
-```
+```text
 O(n)
 ```
 
----
+The array is traversed once.
 
-## Space Complexity
+### Space Complexity
 
-No extra array.
-
-```
+```text
 O(1)
 ```
 
+The array is modified in-place using only constant extra space.
+
 ---
 
-## Key Observation
+## Key Pattern
 
-The array is modified in-place.
+```text
+Two Pointers
++
+In-place Array Modification
+```
 
-Only the first `k` elements matter.
+This problem is a classic example of the **Two Pointer Technique** and is useful for problems involving:
+
+* Moving elements
+* Removing elements in-place
+* Maintaining relative order
+* Partitioning arrays
 
 ---
